@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div class="content">
+
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+<script src="../js/jquery-3.0.0.min.js"></script>
+<script>
+
+    var time = parseInt(new Date().getTime() / 1000);
+    var openkey = "g9kgP3IYLkVygZH4YhpJxLvjn3NLhdIL";
+    var opensecret = "n1Ham7iu9Z3JJJaNhsKYtVeUkjm9zIeE";
+    var host = "https://mini.ai.sogou.com";
+    var api = host + "/streammanager/v2/stream/new";
+    var hash = CryptoJS.HmacSHA256(api, "secret");
+    var token = CryptoJS.enc.Base64.stringify(hash);
+    console.log(token)
+    window.onload = function () {
+        $.ajax({
+            url: api,
+            data: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+            cache: false,
+            dataType: "jsonp",  //指定服务器返回的数据类型
+            jsonp: 'theFunction',//用以获得jsonp回调函数名的参数名(默认为:callback)
+            jsonpCallback: "showData", //指定回调函数名称 
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    }
+
+</script>
+
+</html>

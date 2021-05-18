@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    li{
+        list-style: none;
+    }
+</style>
+<body>
+    <div id="all">
+      
+    </div>
+</body>
+<script src="../js/jquery-3.0.0.min.js"></script>
+<script>
+   window.onload = function(){
+    $.ajax({
+                url: 'http://192.168.43.2:8080/company',
+                type: "get",
+                data: '',
+                dataType: "json",
+                success: function (res) {
+                    console.log(res)
+                    for(let i=0;i<res.data.length;i++){
+                        $('#all').append(`
+                        <ul>
+                        <li>${res.data[i].name}</li>
+                        </ul>
+                        `)
+                    }
+                }
+     })
+   }
+</script>
+</html>         

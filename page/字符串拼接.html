@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="all">
+
+    </div>
+    <script>
+        // 使用反引号拼接字符串的时候可以换行
+        // 再也不用拼接字符转了哈哈哈
+        let aa = '周星驰'
+      let obj = `<ul>
+        <li>朱亚文</li>
+        <li>吴京</li>
+        <li>${aa}</li>
+    </ul>`  
+    document.getElementById('all').innerHTML = obj;
+    console.log(obj)
+        let str = '朱亚文'
+        let inputs = str+'是我最喜欢的演员'
+        let thing = `${str}是我最喜欢的演员`
+        console.log(thing)
+        console.log(inputs)
+        let jj = n=>n*n
+        console.log(jj(9))
+        // rest参数
+        function fn(a,b,...args){
+console.log(a);
+console.log(b);
+console.log(args);
+        }
+        // fn(1,2,3,4,5,6)      
+        // 扩展运算符
+        let fns = ['小花','小菊','小梅']
+        function chunwan(){
+console.log(arguments)
+        }
+        chunwan(...fns)
+        // 扩展运算符数组合并
+        let yule =['肖央','王太利']
+        let quan = ['S','H','E']
+        let arrgument = [...yule,...quan]
+        console.log(arrgument)
+        // 生成器
+        function * lay (){
+console.log('我无敌，你们随意')
+        }
+        let innrite = lay();
+innrite.next();
+
+function * lays (){
+    console.log('111111')
+yield '将进酒'
+console.log('2222222')
+yield '杯莫停'
+console.log('3333333')
+}
+let innrites = lays()
+console.log(innrites.next())
+console.log(innrites.next())
+console.log(innrites.next())
+console.log(innrites.next())
+// 生成器实例
+function one(){
+  setTimeout(()=>{
+      console.log('1111')
+      fs.next()
+  },1000)
+}
+function two(){
+    setTimeout(()=>{
+      console.log('222')
+      fs.next()
+  },2000)  
+}
+function three(){
+    setTimeout(()=>{
+      console.log('333')==arguments
+      fs.next()
+  },3000)  
+}
+function * gen(){
+yield one();
+yield two();
+yield three()
+}
+let fs = gen();
+fs.next()
+
+
+// class实现构造函数
+function dianhua(bri,pri){
+this.bri = bri;
+this.pri = pri;
+}
+dianhua.prototype.call=function(){
+  console.log('我可以打电话')
+}
+let mi = new dianhua('xiaomi','5999')
+console.log(mi)
+
+class phone{
+constructor(brand,price){
+this.brand = brand;
+this.price = price;
+}
+call(){
+  console.log('我可以大地阿华')
+}
+}
+let plus = new phone('huawei','5999')
+console.log(plus)
+
+// 构造函数实现继承
+function smartPhone(bri,pri,color,size){
+  // call方法改变this指向指向smartPhone
+  dianhua.call(this,bri,pri)
+  this.color = color;
+  this.size = size;
+}
+let niuniu = new smartPhone('chuizi','4999','white','6.1')
+console.log(niuniu)
+
+// class继承
+class bigPhone extends phone{
+  constructor(brand,price,color,size){
+    super(brand,price)
+    this.color = color;
+    this.size = size;
+  }
+}
+let dami = new bigPhone('小米','5999','green','6.5')
+console.log(dami);
+    </script>
+</body>
+</html>

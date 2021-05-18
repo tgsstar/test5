@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="all">
+        <p>去重方法总结</p>
+        <input type="search" name="" id="">
+    </div>
+    <script src="../js/jquery-3.0.0.min.js"></script>
+    <script>
+        // 方法一：
+                function fnc(arr) {
+                    const newArr = [];
+                    for(var i = 0; i < arr.length; i++){
+                if(newArr.indexOf(arr[i]) == -1){	
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr;
+        }      
+                const arrType = [1, 2, 3, 5, 6, 3, 2, 8, 3, 1, 2]
+                const newarrType = fnc(arrType)
+                console.log(newarrType)
+
+        // 方法二：
+        function ufc(arr) {
+            const arr1 = [];
+            const obj = {};
+            for (var i = 0; i < arr.length; i++) {
+                if (!obj[arr[i]]) {
+                    obj[arr[i]] = 1;
+                    arr1.push(arr[i])
+                }
+            }
+            return arr1;
+        }
+        const arr2 = [5, 6, 5, 9, 3, 6, 5, 8, 7, 4, 8, 7, 8]
+            const arr3 = ufc(arr2)
+            console.log(arr3)
+            // 方法三：
+            function unique(arr){
+                return Array.from(new Set(arr))
+            }
+            const arr4 = [1,2,3,5,6,3,3,3,3,3,]
+            const arr5 = unique(arr4)
+            console.log(arr5)
+    </script>
+</body>
+
+</html>
